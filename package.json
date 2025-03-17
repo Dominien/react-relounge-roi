@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production && cp public/index.html dist/",
+    "vercel-build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
