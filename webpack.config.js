@@ -19,8 +19,8 @@ module.exports = {
   // Configure externals to use React and ReactDOM from CDN
   externals: {
     'react': 'React',
-    'react-dom': 'ReactDOM'
-    // styled-components will be bundled
+    'react-dom': 'ReactDOM',
+    'styled-components': 'styled'
   },
   module: {
     rules: [

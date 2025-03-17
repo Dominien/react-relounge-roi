@@ -74,6 +74,7 @@ In Webflow:
 <!-- Libraries required for the ROI calculator -->
 <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/styled-components@5.3.11/dist/styled-components.min.js"></script>
 ```
 
 5. Click "Save Changes"
