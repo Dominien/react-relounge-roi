@@ -20,6 +20,7 @@ module.exports = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'
+    // styled-components will be bundled
   },
   module: {
     rules: [
