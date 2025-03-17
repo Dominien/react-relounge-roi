@@ -6,7 +6,14 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'roi-calculator-bundle.js',
     // Use empty string for publicPath to make paths relative
-    publicPath: ''
+    publicPath: '',
+    // Export components to global scope for debugging
+    library: {
+      name: 'ROICalculatorLib',
+      type: 'umd',
+      export: 'default'
+    },
+    globalObject: 'this'
   },
   devServer: {
     static: [

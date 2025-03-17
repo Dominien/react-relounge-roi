@@ -113,5 +113,36 @@
   
   <!-- Your ROI calculator bundle -->
   <script src="roi-calculator-bundle.js"></script>
+  
+  <!-- Debug script to verify element exists and check for errors -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM fully loaded');
+      console.log('ROI Calculator container:', document.getElementById('roi-calculator'));
+      setTimeout(function() {
+        // Check if element has children (indicating React rendered something)
+        var container = document.getElementById('roi-calculator');
+        if (container && container.childNodes.length === 0) {
+          console.error('Calculator did not render. Attempting manual render...');
+          // Force re-render if component is available
+          if (window.React && window.ReactDOM && window.React.createElement) {
+            try {
+              var ROICalculator = window.ROICalculator;
+              if (ROICalculator) {
+                window.ReactDOM.render(
+                  window.React.createElement(ROICalculator),
+                  document.getElementById('roi-calculator')
+                );
+              } else {
+                console.error('ROICalculator component not found in global scope');
+              }
+            } catch (e) {
+              console.error('Error forcing render:', e);
+            }
+          }
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
