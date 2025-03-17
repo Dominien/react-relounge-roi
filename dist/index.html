@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Relounge ROI Calculator</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- React and ReactDOM scripts -->
-  <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/styled-components@5.3.11/dist/styled-components.min.js"></script>
   <style>
     body {
       background-color: #f5f5f7;
@@ -74,97 +70,11 @@
       font-family: monospace;
       font-size: 14px;
     }
-    
-    /* Simple calculator styling as a fallback */
-    .calculator-fallback {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #fff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border-radius: 10px;
-      overflow: hidden;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .calculator-fallback h1 {
-      text-align: center;
-      color: #1a49b5;
-      background-color: #f9faff;
-      padding: 20px;
-      margin: 0;
-      font-size: 1.8rem;
-      font-weight: 600;
-      border-bottom: 1px solid #e9ecef;
-    }
-    
-    .calculator-fallback-form {
-      padding: 20px 30px;
-      background-color: #fff;
-    }
-    
-    .calculator-fallback-results {
-      padding: 20px 30px;
-      background-color: #f8f9fa;
-      border-top: 1px solid #e9ecef;
-    }
-    
-    .input-row {
-      margin-bottom: 15px;
-    }
-    
-    .input-label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 500;
-    }
-    
-    .calculator-input {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    
-    .calculator-results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
-    
-    .results-item {
-      background-color: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      text-align: center;
-    }
-    
-    .results-item h3 {
-      margin: 0 0 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #6c757d;
-    }
-    
-    .results-item p {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1a49b5;
-    }
-    
-    .calculator-button {
-      background-color: #1a49b5;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 15px;
-      float: right;
-    }
   </style>
+  <!-- React and ReactDOM scripts - Load these before the bundle -->
+  <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/styled-components@5.3.11/dist/styled-components.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -179,65 +89,7 @@
     </div>
     
     <!-- React component will render here -->
-    <div id="roi-calculator">
-      <!-- Fallback HTML calculator if React doesn't load -->
-      <div class="calculator-fallback">
-        <h1>Customer Relounge ROI Calculator</h1>
-        
-        <div class="calculator-fallback-form">
-          <div class="input-row">
-            <label class="input-label">Average Order Value ($)</label>
-            <input type="number" class="calculator-input" id="avg-order-value" value="75">
-          </div>
-          
-          <div class="input-row">
-            <label class="input-label">Orders per Month</label>
-            <input type="number" class="calculator-input" id="orders-per-month" value="500">
-          </div>
-          
-          <div class="input-row">
-            <label class="input-label">Current Customer Return Rate (%)</label>
-            <input type="range" min="0" max="100" value="15" id="return-rate">
-            <span id="return-rate-value">15%</span>
-          </div>
-          
-          <div class="input-row">
-            <label class="input-label">Customer Relounge Monthly Cost ($)</label>
-            <input type="number" class="calculator-input" id="service-cost" value="997">
-          </div>
-          
-          <div class="input-row">
-            <label class="input-label">Expected Increase in Return Rate (%)</label>
-            <input type="range" min="0" max="50" value="5" id="increased-rate">
-            <span id="increased-rate-value">5%</span>
-          </div>
-          
-          <button class="calculator-button" onclick="calculateFallback()">Calculate</button>
-          <div style="clear: both;"></div>
-        </div>
-        
-        <div class="calculator-fallback-results">
-          <div class="calculator-results-grid">
-            <div class="results-item">
-              <h3>Current Monthly Revenue</h3>
-              <p id="monthly-revenue">$37,500</p>
-            </div>
-            <div class="results-item">
-              <h3>Additional Annual Revenue</h3>
-              <p id="additional-revenue">$22,500</p>
-            </div>
-            <div class="results-item">
-              <h3>Return per $1 Spent</h3>
-              <p id="return-per-dollar">$1.88</p>
-            </div>
-            <div class="results-item">
-              <h3>Annual ROI</h3>
-              <p id="annual-roi">88%</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="roi-calculator"></div>
     
     <div class="webflow-instructions">
       <h2>Webflow Integration Instructions</h2>
@@ -259,46 +111,36 @@
       </ol>
     </div>
   </div>
-  
-  <!-- Simple fallback calculator script -->
-  <script>
-    function calculateFallback() {
-      // Get input values
-      var avgOrderValue = parseFloat(document.getElementById('avg-order-value').value) || 0;
-      var ordersPerMonth = parseFloat(document.getElementById('orders-per-month').value) || 0;
-      var returnRate = parseFloat(document.getElementById('return-rate').value) || 0;
-      var serviceCost = parseFloat(document.getElementById('service-cost').value) || 0;
-      var increasedRate = parseFloat(document.getElementById('increased-rate').value) || 0;
-      
-      // Calculate metrics
-      var monthlyRevenue = avgOrderValue * ordersPerMonth;
-      var additionalMonthlyRevenue = ordersPerMonth * (increasedRate / 100) * avgOrderValue;
-      var additionalAnnualRevenue = additionalMonthlyRevenue * 12;
-      var annualServiceCost = serviceCost * 12;
-      var returnPerDollar = additionalAnnualRevenue / annualServiceCost;
-      var annualROI = ((additionalAnnualRevenue - annualServiceCost) / annualServiceCost) * 100;
-      
-      // Update results
-      document.getElementById('monthly-revenue').textContent = '$' + monthlyRevenue.toLocaleString();
-      document.getElementById('additional-revenue').textContent = '$' + additionalAnnualRevenue.toLocaleString();
-      document.getElementById('return-per-dollar').textContent = '$' + returnPerDollar.toFixed(2);
-      document.getElementById('annual-roi').textContent = annualROI.toFixed(0) + '%';
-    }
-    
-    // Update range slider values
-    document.getElementById('return-rate').addEventListener('input', function() {
-      document.getElementById('return-rate-value').textContent = this.value + '%';
-    });
-    
-    document.getElementById('increased-rate').addEventListener('input', function() {
-      document.getElementById('increased-rate-value').textContent = this.value + '%';
-    });
-    
-    // Calculate initial values
-    calculateFallback();
-  </script>
-  
-  <!-- Your ROI calculator bundle -->
+
+  <!-- Ensure bundle loads last -->
   <script src="roi-calculator-bundle.js"></script>
+  
+  <!-- Make sure React component renders -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, checking for React component...');
+      var calculatorContainer = document.getElementById('roi-calculator');
+      
+      if (!calculatorContainer) {
+        console.error('Calculator container not found!');
+        return;
+      }
+      
+      // Ensure all dependencies are loaded
+      if (!window.React || !window.ReactDOM || !window.styled) {
+        console.error('Missing dependencies:', {
+          React: !!window.React,
+          ReactDOM: !!window.ReactDOM,
+          styled: !!window.styled
+        });
+      }
+      
+      // Fix for styled-components sometimes not initializing properly
+      if (window.styled && !window.styled.div) {
+        console.log('Fixing styled-components initialization...');
+        window.styled = window.styled.default || window.styled;
+      }
+    });
+  </script>
 </body>
 </html>
