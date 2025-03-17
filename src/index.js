@@ -3,45 +3,63 @@ import ReactDOM from 'react-dom';
 import ROICalculator from './components/ROICalculator';
 import './styles.css';
 
-// Make the calculator component available globally
-window.ROICalculator = ROICalculator;
+// This is the main entry point for the calculator
+const App = () => {
+  return (
+    <React.StrictMode>
+      <ROICalculator />
+    </React.StrictMode>
+  );
+};
 
-// Wait for DOM to be ready
-function initializeCalculator() {
-  console.log("Initializing ROI Calculator");
-  const container = document.getElementById('roi-calculator');
-  
-  if (container) {
-    console.log("Found container, rendering calculator");
-    try {
-      ReactDOM.render(
-        <React.StrictMode>
-          <ROICalculator />
-        </React.StrictMode>,
-        container
-      );
-      console.log("Calculator rendered successfully");
-    } catch (error) {
-      console.error("Error rendering calculator:", error);
+// Self-executing function to initialize the calculator
+(function() {
+  // Create a global init function that can be called from anywhere
+  window.initROICalculator = function() {
+    console.log("Manual init called");
+    const container = document.getElementById('roi-calculator');
+    if (container) {
+      ReactDOM.render(<App />, container);
+      return true;
     }
+    return false;
+  };
+
+  // Main initialization function
+  function initialize() {
+    console.log("Initializing calculator...");
+    const container = document.getElementById('roi-calculator');
+    
+    if (!container) {
+      console.error("Calculator container not found");
+      return;
+    }
+    
+    try {
+      ReactDOM.render(<App />, container);
+      console.log("Calculator initialized successfully");
+    } catch (err) {
+      console.error("Error initializing calculator:", err);
+    }
+  }
+
+  // Call the initialize function when the DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialize);
   } else {
-    console.error("ROI calculator container not found");
+    // DOM already loaded, initialize now
+    initialize();
   }
-}
+  
+  // Backup initialization with delay to ensure DOM is fully loaded
+  setTimeout(function() {
+    const container = document.getElementById('roi-calculator');
+    if (container && container.childNodes.length === 0) {
+      console.log("Delayed initialization");
+      initialize();
+    }
+  }, 1000);
+})();
 
-// Try to render immediately
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  setTimeout(initializeCalculator, 100);
-} else {
-  // Or wait for DOM to be ready
-  document.addEventListener('DOMContentLoaded', initializeCalculator);
-}
-
-// Fallback in case the component hasn't rendered after a delay
-window.setTimeout(function() {
-  const container = document.getElementById('roi-calculator');
-  if (container && !container.hasChildNodes()) {
-    console.log("Fallback: Re-rendering calculator");
-    initializeCalculator();
-  }
-}, 1000);
+// Export for module usage
+export default App;
