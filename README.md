@@ -45,8 +45,17 @@ Yes, Vercel is an excellent choice for hosting your bundle file. Here's how to d
 
 1. Create a new project on Vercel (sign up if needed)
 2. Connect your GitHub repository or upload the `dist` folder directly
-3. Once deployed, Vercel will provide you with a URL to your project (e.g., `https://your-project.vercel.app`)
-4. The full URL to your bundle will be something like: `https://your-project.vercel.app/roi-calculator-bundle.js`
+3. Make sure to deploy the entire project (not just the dist folder)
+4. Once deployed, Vercel will provide you with a URL to your project (e.g., `https://your-project.vercel.app`)
+5. You'll be able to access:
+   - Demo page at the root URL: `https://your-project.vercel.app/`
+   - Bundle file at: `https://your-project.vercel.app/roi-calculator-bundle.js`
+
+**Troubleshooting Vercel Deployment**:
+- If you can't see the calculator at your Vercel URL, make sure you're deploying the entire project, not just the dist folder
+- The repository includes a `vercel.json` configuration file that tells Vercel how to build and serve the project
+- When you deploy to Vercel, it will automatically run the build command that copies index.html to the dist folder
+- This allows you to see the calculator demo at your Vercel URL as a preview
 
 Other hosting options include:
 - Amazon S3

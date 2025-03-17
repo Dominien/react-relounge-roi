@@ -8,6 +8,14 @@ module.exports = {
     // Use empty string for publicPath to make paths relative
     publicPath: ''
   },
+  devServer: {
+    static: [
+      { directory: path.join(__dirname, 'public') },
+      { directory: path.join(__dirname, 'dist') }
+    ],
+    hot: true,
+    port: 3000
+  },
   // Configure externals to use React and ReactDOM from CDN
   externals: {
     'react': 'React',
